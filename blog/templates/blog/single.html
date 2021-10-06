@@ -14,11 +14,15 @@
                     <div class="col-md-8">
                         <div class="blog-area">
                             <div class="blog-area-part">
+                                {% if post.photo %}
+                                <img src="{{ post.photo.url }}">
+                                {% else %}
+                                <img src="https://picsum.photos/id/1060/300/201/?blur=2" alt="{{ post.title }}">
+                                {% endif %}
                                 <h2>{{ post.title }}</h2>
                                 <div class="single-content">
                                     <div>
-                                            <span>Category: <a
-                                                    href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
+                                            <span>Category: <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
                                         <br>
                                         {% if post.tags.exists %}
                                         <span>
